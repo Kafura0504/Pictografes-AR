@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig>
   <Tracking>
-    <ImageTarget name="animegede" size="6.000000 6.000000" />
-    <ImageTarget name="kucing" size="2.000000 2.000000" />
-    <ImageTarget name="whatsappimage2025-04-11at05" size="6.000000 4.400000" />
-    <ImageTarget name="whatsappimage2025-04-11at04" size="6.000000 3.604265" />
-    <ImageTarget name="robloxscreenshot20250410_231508029" size="6.000000 3.303125" />
-    <ImageTarget name="62976862" size="6.000000 9.000000" />
+    <ImageTarget name="koffie-americano" size="6.000000 3.430530" />
+    <ImageTarget name="koffie-susu-gula-aren" size="6.000000 3.430530" />
+    <ImageTarget name="kue-lepa-Tjoklat" size="6.000000 3.430530" />
+    <ImageTarget name="roti-garing" size="6.000000 3.430530" />
+    <ImageTarget name="banana-funky" size="6.000000 3.430530" />
+    <ImageTarget name="Ranggam-rasa" size="6.000000 3.430530" />
+    <ImageTarget name="Dimsoem" size="6.000000 3.427788" />
   </Tracking>
 </QCARConfig>
