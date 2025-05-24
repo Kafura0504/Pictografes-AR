@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class homepage : MonoBehaviour
 {
@@ -8,8 +9,11 @@ public class homepage : MonoBehaviour
     public GameObject[] UI2;
     public GameObject[] UI3;
     public GameObject[] bg;
+    public GameObject hal1;
+    public GameObject hal2;
 
-    private int index;
+
+    private int index = 0;
 
 
     void Start()
@@ -19,7 +23,20 @@ public class homepage : MonoBehaviour
 
     void Update()
     {
-
+        if (index == 0)
+        {
+            hal2.SetActive(false);
+            hal1.SetActive(true);
+        }
+        else if (index == 1)
+        {
+            hal1.SetActive(false);
+            hal2.SetActive(true);
+        }
+        else if (index == 3)
+        {
+            SceneManager.LoadScene("AR-section");
+        }
     }
 
     public IEnumerator firstpage()
@@ -44,6 +61,15 @@ public class homepage : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
         }
     }
-    
-    
+
+    public void btnhandler()
+    {
+        index++;
+        Debug.Log("jeruk limau" + index);
+    }
+
+    public void btnprevious()
+    {
+        index--;
+    }
 }
