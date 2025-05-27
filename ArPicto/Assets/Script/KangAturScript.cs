@@ -66,7 +66,7 @@ public class KangAturScript : MonoBehaviour
 
             Penanda.SetActive(true);
         }
-        else{
+        else if (CountMarker==1){
             goNama.SetActive(true);
             goDeskripsi.SetActive(true);
 

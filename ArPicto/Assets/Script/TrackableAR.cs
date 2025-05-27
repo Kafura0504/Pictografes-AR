@@ -10,12 +10,14 @@ public class TrackableAR : DefaultObserverEventHandler
     {
         marker = true;
         base.OnTrackingFound();
+        Debug.Log("found");
     }
 
     protected override void OnTrackingLost()
     {
         marker = false;
         base.OnTrackingLost();
+        Debug.Log("hilang");
     }
 
     public bool GetMarker()
