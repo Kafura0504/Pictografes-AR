@@ -1,49 +1,60 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class homepage : MonoBehaviour
 {
-
     public GameObject[] UI1;
-    public GameObject[] UI2;
-    public GameObject[] UI3;
     public GameObject[] bg;
     public GameObject hal1;
     public GameObject hal2;
     public GameObject sec1;
     public GameObject sec2;
+    public Animation progression;
+    public Button btn;
+    public Button backbtn;
 
 
     private int index = 0;
-
+    private int lastindex;
+    private bool isTransitioning;
 
     void Start()
     {
+        foreach (AnimationState state in progression)
+        {
+            Debug.Log("Found clip: " + state.name);
+        }
 
     }
 
     void Update()
     {
-        if (index == 0)
+        if (index == 0 && lastindex == 1 && !isTransitioning)
         {
-            hal2.SetActive(false);
-            hal1.SetActive(true);
+            h1();
+            progression.Play("hal1");
+            StartCoroutine(buttondisabler());
         }
-        else if (index == 1)
+        else if (index == 1 && lastindex == 0 && !isTransitioning)
         {
-            hal1.SetActive(false);
-            hal2.SetActive(true);
-            sec1.SetActive(true);
-            sec2.SetActive(false);
-            
+            h2();
+            progression.Play("Hal2");
+            StartCoroutine(buttondisabler());
+
         }
-        else if (index == 2)
+        else if (index == 2 && lastindex == 1 && !isTransitioning)
         {
-            hal1.SetActive(false);
-            hal2.SetActive(true);
-            sec1.SetActive(false);
-            sec2.SetActive(true);
+            h3();
+            progression.Play("hal3");
+            StartCoroutine(buttondisabler());
+        }
+        else if (index == 1 && lastindex == 2 && !isTransitioning)
+        {
+            h2();
+            progression.Play("hal2rev");
+            StartCoroutine(buttondisabler());
         }
         else if (index == 3)
         {
@@ -51,37 +62,51 @@ public class homepage : MonoBehaviour
         }
     }
 
-    public IEnumerator firstpage()
-    {
-        for (int i = 0; i < UI1.Length; i++)
-        {
-            Animator anim = UI1[i].GetComponent<Animator>();
-            UI1[i].SetActive(true);
-            anim.Play(UI1[i].name + "in");
-            yield return new WaitForSeconds(0.5f);
-        }
-
-    }
-
-    public IEnumerator baground()
-    {
-        for (int i = 0; i < bg.Length; i++)
-        {
-            Animator anim = bg[i].GetComponent<Animator>();
-            bg[i].SetActive(true);
-            anim.Play(bg[i].name + "in");
-            yield return new WaitForSeconds(0.5f);
-        }
-    }
 
     public void btnhandler()
     {
+        lastindex = index;
         index++;
         Debug.Log("jeruk limau" + index);
     }
 
     public void btnprevious()
     {
+        lastindex = index;
         index--;
+    }
+
+    void h1()
+    {
+        hal2.SetActive(false);
+        hal1.SetActive(true);
+    }
+    void h2()
+    {
+        hal1.SetActive(false);
+        hal2.SetActive(true);
+        sec1.SetActive(true);
+        sec2.SetActive(false);
+    }
+    void h3()
+    {
+        hal1.SetActive(false);
+        hal2.SetActive(true);
+        sec1.SetActive(false);
+        sec2.SetActive(true);
+    }
+
+    public IEnumerator buttondisabler()
+    {
+        isTransitioning = true;
+        btn.interactable = false;
+        backbtn.interactable = false;
+
+        yield return new WaitForSeconds(1f); // Or match animation length
+
+        btn.interactable = true;
+        backbtn.interactable = true;
+        isTransitioning = false;
+        lastindex = -1;
     }
 }
