@@ -108,5 +108,6 @@ public class homepage : MonoBehaviour
         backbtn.interactable = true;
         isTransitioning = false;
         lastindex = -1;
+        
     }
 }
