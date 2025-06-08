@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig>
   <Tracking>
+    <ImageTarget name="esletji" size="6.000000 3.430530" />
+    <ImageTarget name="cardar-09" size="6.000000 3.430530" />
     <ImageTarget name="koffie-americano" size="6.000000 3.430530" />
     <ImageTarget name="koffie-susu-gula-aren" size="6.000000 3.430530" />
     <ImageTarget name="kue-lepa-Tjoklat" size="6.000000 3.430530" />
